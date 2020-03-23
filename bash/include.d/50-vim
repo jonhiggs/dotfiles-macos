@@ -3,24 +3,9 @@ if [[ -z "${EDITOR}" ]]; then
 fi
 
 hash -p ${EDITOR} nvim
-
-export NVIM_LISTEN_ADDRESS="/tmp/nvim"
-
-function vf() {
-  root_dir=$(project_root $0)
-  cd "${root_dir}"
-  file=$(fzf)
-  [[ -f ${file} ]] && nvr --remote-tab "${file}"
-}
-
-function vl() {
-  /opt/nvim/share/nvim/runtime/macros/less.sh $@
-}
-
-alias v="nvr --remote-tab"
+alias v="${EDITOR}"
 alias ivm="${EDITOR}"
 alias vi="${EDITOR}"
 alias vim="${EDITOR}"
-alias vims="while true; do vim; sleep 0.3; done"
 
 # vim: ft=sh

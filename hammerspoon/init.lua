@@ -10,26 +10,7 @@ require "hs.screen"
 
 -- Apptivate Replacement ---------------------------
 hs.hotkey.bind({"cmd"}, "1", function()
-  local mode = hs.screen.mainScreen():currentMode()
-  if string.find(mode['scale'], "^2.0") then
-    local bad_term = hs.application.get("com.googlecode.iterm2")
-    local good_term = "Alacritty"
-
-    if bad_term ~= nil then
-      bad_term:kill()
-    end
-
-    application.launchOrFocus(good_term)
-  else
-    local bad_term = hs.application.get("io.alacritty")
-    local good_term = "iTerm"
-
-    if bad_term ~= nil then
-      bad_term:kill()
-    end
-
-    application.launchOrFocus(good_term)
-  end
+  application.launchOrFocus("iTerm")
 end)
 
 hs.hotkey.bind({"cmd"}, "2", function()
@@ -38,14 +19,6 @@ end)
 
 hs.hotkey.bind({"cmd"}, "3", function()
   application.launchOrFocus("Slack")
-end)
-
-hs.hotkey.bind({"cmd"}, "4", function()
-  application.launchOrFocus("Mail")
-end)
-
-hs.hotkey.bind({"cmd"}, "5", function()
-  application.launchOrFocus("Calendar")
 end)
 
 hs.hotkey.bind({"cmd"}, "6", function()
@@ -80,16 +53,12 @@ hs.hotkey.bind({"cmd", "shift"}, "D", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  f.x = max.w / 8           -- 1/8
-  f.y = 0
-  f.w = ( max.w / 4 ) * 3   -- 3/4
-  f.h = max.h
+  margin = 325
 
-  local app = win:application()
-  if string.find(app:title(), "^iTerm") then
-    f.x = (f.x - 8)
-    f.w = (f.w + (8 * 2))
-  end
+  f.x = margin
+  f.y = 0
+  f.w = 1920 - (margin * 2 )
+  f.h = max.h
 
   win:setFrame(f)
 end)
@@ -165,18 +134,3 @@ hs.hotkey.bind({"cmd", "shift"}, "J", function()
   win:setFrame(f)
 end)
 
-
--- Select keyboard in karabiner when it's connected/disconnected.
-hs.usb.watcher.new(function(dataTable)
-  print(dataTable['eventType'] .. " " .. dataTable['productName'])
-  if dataTable['productName'] == 'H0001' then
-     if dataTable['eventType'] == 'added' then
-       -- bluetooth("on")
-       hs.execute [["/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" "--select-profile" "ML67"]]
-     elseif dataTable['eventType'] == 'removed' then
-       hs.execute [["/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" "--select-profile" "Default profile"]]
-       -- bluetooth("off")
-     end
-  end
-
-end):start()

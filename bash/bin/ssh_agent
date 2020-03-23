@@ -7,14 +7,15 @@ pid() {
 
 running() {
   [[ -f "${SETTINGS_FILE}" ]] || return 1
-  [[ -d "/proc/$(pid)" ]]
+  [[ $(ps -p $(pid) | grep -c ssh-agent) -ne 0 ]]
   return $?
 }
 
 running || ssh-agent > ${SETTINGS_FILE}
 
-for k in ${HOME}/.local/src/secrets/ssh/*.pub; do
-  ssh-add ~/.local/src/secrets/ssh/$(basename $k .pub) 2> /dev/null
+for k in ${HOME}/.ssh/*.pub ${HOME}/.local/src/secrets/ssh/*.pub; do
+  echo "adding $k"
+  ssh-add ${k%.pub} 2> /dev/null
 done
 
 cat ${SETTINGS_FILE}
