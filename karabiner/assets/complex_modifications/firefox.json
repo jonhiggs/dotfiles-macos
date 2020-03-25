@@ -243,7 +243,8 @@
             {
               "bundle_identifiers": [
                 "^com\\.apple\\.iChat$",
-                "^com\\.apple\\.mail$"
+                "^com\\.apple\\.mail$",
+                "^org\\.mozilla\\.firefox$"
               ],
               "type": "frontmost_application_if"
             }
@@ -330,6 +331,42 @@
               "modifiers": [
                 "right_option"
               ]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Firefox Honour Ctrl-K",
+      "manipulators": [
+        {
+          "conditions": [
+            {
+              "bundle_identifiers": [
+                "^com\\.apple\\.iChat$",
+                "^org\\.mozilla\\.firefox$"
+              ],
+              "type": "frontmost_application_if"
+            }
+          ],
+          "from": {
+            "key_code": "k",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "end",
+              "modifiers": [
+                "shift"
+              ]
+            },
+            {
+              "key_code": "delete_or_backspace"
             }
           ],
           "type": "basic"

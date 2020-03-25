@@ -1,6 +1,7 @@
 tap 'homebrew/services'
 
 brews = %w[
+  ag
   bash
   bash-completion
   bash-completion@2

@@ -11,7 +11,15 @@ running() {
   return $?
 }
 
-running || ssh-agent > ${SETTINGS_FILE}
+is_screen() {
+  [[ ${TERM} =~ ^screen ]]
+  return $?
+}
+
+running && exit 0
+is_screen && exit 0
+
+ssh-agent > ${SETTINGS_FILE}
 
 for k in ${HOME}/.ssh/*.pub ${HOME}/.local/src/secrets/ssh/*.pub; do
   echo "adding $k"

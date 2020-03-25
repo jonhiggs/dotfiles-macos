@@ -1,0 +1,26 @@
+{
+  "title": "cmd-esc",
+  "rules": [
+    {
+      "description": "Cmd+Esc to Grave",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "escape",
+            "modifiers": {
+              "mandatory": [
+                "command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "grave_accent_and_tilde"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

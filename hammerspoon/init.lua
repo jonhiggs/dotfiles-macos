@@ -53,7 +53,7 @@ hs.hotkey.bind({"cmd", "shift"}, "D", function()
   local screen = win:screen()
   local max = screen:frame()
 
-  margin = 325
+  margin = 300
 
   f.x = margin
   f.y = 0
