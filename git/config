@@ -1,0 +1,28 @@
+[user]
+	name = Jon Higgs
+	email = jhiggs@eml.cc
+[help]
+	autocorrect = 1
+[core]
+	excludesfile = ~/.config/git/gitignore_global
+[diff]
+	tool = opendiff
+[merge]
+	tool = opendiff
+[push]
+	default = current
+[difftool "opendiff"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+[alias]
+	p = pull
+	s = status
+	co = checkout
+	master-rebaser = !git fetch && git rebase origin/master
+	branch-cleanlocal = "!for b in $(git branch | grep -v '^*'); do git branch -d $b; done"
+	rbi = !git rebase -i origin/master
+	amend = commit -v --amend
+	reword = commit -v --amend
+	fixup = !git reset --soft HEAD~ && git commit --amend --no-edit
+
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
