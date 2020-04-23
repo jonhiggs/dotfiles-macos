@@ -34,6 +34,18 @@ function coord_for(win,position)
 	return x,win:frame().y
 end
 
+function is_oversize(win,w,h)
+	if (win:frame().w > win:screen():frame().w * w) then
+		return true
+	end
+
+	if (win:frame().y > win:screen():frame().h * h) then
+		return true
+	end
+
+	return false
+end
+
 -- fullscreen
 hs.hotkey.bind({"cmd", "shift"}, "F", function()
   local window = hs.window.focusedWindow()
@@ -67,6 +79,10 @@ end)
 -- left
 hs.hotkey.bind({"cmd", "shift"}, "H", function()
   local window = hs.window.focusedWindow()
+	if is_oversize(window,0.5,1) then
+		window:setFrame(resize_window(window,0.5,1))
+	end
+
 	local x,y = coord_for(window,"left")
 	window:setFrame(position_window(window,x,y))
 end)
@@ -74,6 +90,11 @@ end)
 -- right
 hs.hotkey.bind({"cmd", "shift"}, "L", function()
   local window = hs.window.focusedWindow()
+
+	if is_oversize(window,0.5,1) then
+		window:setFrame(resize_window(window,0.5,1))
+	end
+
 	local x,y = coord_for(window,"right")
 	logger.i("left x:", x)
 	logger.i("left y:", y)
