@@ -6,9 +6,18 @@ require "hs.screen"
 logger.i("window management is loaded")
 
 function resize_window(win,w,h)
+	-- resize to a proportion of the screen
 	local f = win:frame()
 	f.w = w * win:screen():frame().w
 	f.h = h * win:screen():frame().h
+	return f
+end
+
+function relative_resize_window(win,w,h)
+	-- resize by number of pixels
+	local f = win:frame()
+	f.w = w + win:frame().w
+	f.h = h + win:frame().h
 	return f
 end
 
@@ -20,20 +29,33 @@ function position_window(win,x,y)
 end
 
 function coord_for(win,position)
+	local y = (win:screen():frame().h - win:frame().h) / 2
 	if string.match(position, "left") then
-		x = 0
+		x,_ = padding(win,0.5,1)
 	elseif string.match(position, "right") then
-		x = win:screen():frame().w - win:frame().w
+		x,_ = padding(win,0.5,1)
+		x = x + (win:screen():frame().w / 2)
 	elseif string.match(position, "center") then
 		x = (win:screen():frame().w / 2) - (win:frame().w / 2)
 	else
 		x = win:frame().x
 	end
 
-	return x,win:frame().y
+	return x,y
+end
+
+function padding(win,w,h)
+	local max_width = win:screen():frame().w * w
+	local max_height = win:screen():frame().h * h
+
+	padding_x = (max_width - win:frame().w) / 2
+	padding_y = (max_height - win:frame().h) / 2
+
+	return padding_x,padding_y
 end
 
 function is_oversize(win,w,h)
+	-- w and h are percentage of screen (0.5 == 50%)
 	if (win:frame().w > win:screen():frame().w * w) then
 		return true
 	end
@@ -54,15 +76,15 @@ end)
 
 -- narrow
 hs.hotkey.bind({"cmd", "shift"}, "D", function()
-  local window = hs.window.focusedWindow()
-	window:setFrame(resize_window(window,0.6,1))
+	local window = hs.window.focusedWindow()
+	window:setFrame(resize_window(window,0.70,1))
 	local x,y = coord_for(window,"center")
 	window:setFrame(position_window(window,x,y))
 end)
 
 -- slim
 hs.hotkey.bind({"cmd", "shift"}, "S", function()
-  local window = hs.window.focusedWindow()
+	local window = hs.window.focusedWindow()
 	window:setFrame(resize_window(window,0.3,1))
 	local x,y = coord_for(window,"center")
 	window:setFrame(position_window(window,x,y))
@@ -98,6 +120,18 @@ hs.hotkey.bind({"cmd", "shift"}, "L", function()
 	logger.i("left x:", x)
 	logger.i("left y:", y)
 	window:setFrame(position_window(window,x,y))
+end)
+
+-- adjust narrower
+hs.hotkey.bind({"cmd", "shift"}, "left", function()
+	local window = hs.window.focusedWindow()
+	window:setFrame(relative_resize_window(window,-20,0))
+end)
+
+-- adjust wider
+hs.hotkey.bind({"cmd", "shift"}, "right", function()
+	local window = hs.window.focusedWindow()
+	window:setFrame(relative_resize_window(window,20,0))
 end)
 
 
