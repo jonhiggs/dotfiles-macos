@@ -5,7 +5,6 @@ require "hs.screen"
 
 logger.i("window management is loaded")
 
-
 function resize_window(win,w,h)
 	local f = win:frame()
 	f.w = w * win:screen():frame().w
@@ -214,18 +213,4 @@ end)
 --     f.x = 0
 --   end
 --   win:setFrame(f)
--- end)
--- 
--- -- cmus
--- hs.task = require("hs.task")
--- hs.hotkey.bind({}, "F14", function()
---   hs.task.new("/usr/local/bin/cmus-remote", nil, {"--pause"}):start()
--- end)
--- 
--- hs.hotkey.bind({}, "F15", function()
---   hs.task.new("/usr/local/bin/cmus-remote", nil, {"--next"}):start()
--- end)
--- 
--- hs.hotkey.bind({}, "F13", function()
---   hs.task.new("/usr/local/bin/cmus-remote", nil, {"--prev"}):start()
 -- end)
