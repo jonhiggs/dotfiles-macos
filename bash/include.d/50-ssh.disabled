@@ -1,3 +1,0 @@
-eval $(${HOME}/.local/src/dotfiles-macos/bash/bin/ssh_agent)
-
-# vim: ft=sh
