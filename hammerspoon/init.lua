@@ -99,3 +99,7 @@ hs.hotkey.bind({}, "F15", function()
   hs.task.new("/Users/jonhiggs/.local/src/dotfiles-macos/bash/bin/cmus-remote-remote", nil, {"--next"}):start()
 end)
 
+-- sleep
+hs.hotkey.bind({}, "F16", function()
+  hs.task.new("/usr/bin/pmset", nil, {"displaysleepnow"}):start()
+end)
