@@ -77,6 +77,7 @@ end)
 -- narrow
 hs.hotkey.bind({"cmd", "shift"}, "D", function()
 	local window = hs.window.focusedWindow()
+	window:setFrame(position_window(window,0,0))
 	window:setFrame(resize_window(window,0.70,1))
 	local x,y = coord_for(window,"center")
 	window:setFrame(position_window(window,x,y))
