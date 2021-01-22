@@ -204,8 +204,6 @@
           "conditions": [
             {
               "bundle_identifiers": [
-                "^com\\.apple\\.iChat$",
-                "^com\\.apple\\.mail$",
                 "^org\\.mozilla\\.firefox$"
               ],
               "type": "frontmost_application_if"
@@ -242,8 +240,6 @@
           "conditions": [
             {
               "bundle_identifiers": [
-                "^com\\.apple\\.iChat$",
-                "^com\\.apple\\.mail$",
                 "^org\\.mozilla\\.firefox$"
               ],
               "type": "frontmost_application_if"
@@ -276,8 +272,6 @@
           "conditions": [
             {
               "bundle_identifiers": [
-                "^com\\.apple\\.iChat$",
-                "^com\\.apple\\.mail$",
                 "^org\\.mozilla\\.firefox$"
               ],
               "type": "frontmost_application_if"
@@ -310,8 +304,6 @@
           "conditions": [
             {
               "bundle_identifiers": [
-                "^com\\.apple\\.iChat$",
-                "^com\\.apple\\.mail$",
                 "^org\\.mozilla\\.firefox$"
               ],
               "type": "frontmost_application_if"
@@ -344,7 +336,6 @@
           "conditions": [
             {
               "bundle_identifiers": [
-                "^com\\.apple\\.iChat$",
                 "^org\\.mozilla\\.firefox$"
               ],
               "type": "frontmost_application_if"
