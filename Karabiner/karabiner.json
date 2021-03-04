@@ -591,41 +591,51 @@
                             "from": {
                                 "key_code": "caps_lock"
                             },
-                            "to": {
-                                "key_code": "left_control"
-                            }
+                            "to": [
+                                {
+                                    "key_code": "left_control"
+                                }
+                            ]
                         },
                         {
                             "from": {
                                 "key_code": "fn"
                             },
-                            "to": {
-                                "key_code": "f4"
-                            }
+                            "to": [
+                                {
+                                    "key_code": "f4"
+                                }
+                            ]
                         },
                         {
                             "from": {
                                 "key_code": "grave_accent_and_tilde"
                             },
-                            "to": {
-                                "key_code": "escape"
-                            }
+                            "to": [
+                                {
+                                    "key_code": "escape"
+                                }
+                            ]
                         },
                         {
                             "from": {
                                 "key_code": "right_command"
                             },
-                            "to": {
-                                "key_code": "right_option"
-                            }
+                            "to": [
+                                {
+                                    "key_code": "right_option"
+                                }
+                            ]
                         },
                         {
                             "from": {
                                 "key_code": "right_option"
                             },
-                            "to": {
-                                "key_code": "fn"
-                            }
+                            "to": [
+                                {
+                                    "key_code": "fn"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -661,97 +671,121 @@
                     "from": {
                         "key_code": "f1"
                     },
-                    "to": {
-                        "key_code": "f1"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f1"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f2"
                     },
-                    "to": {
-                        "key_code": "f2"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f2"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f3"
                     },
-                    "to": {
-                        "key_code": "f3"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f3"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f4"
                     },
-                    "to": {
-                        "key_code": "f4"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f4"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f5"
                     },
-                    "to": {
-                        "key_code": "f5"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f5"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f6"
                     },
-                    "to": {
-                        "key_code": "f6"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f6"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f7"
                     },
-                    "to": {
-                        "key_code": "f7"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f7"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f8"
                     },
-                    "to": {
-                        "key_code": "f8"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f8"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f9"
                     },
-                    "to": {
-                        "key_code": "f9"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f9"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f10"
                     },
-                    "to": {
-                        "key_code": "f10"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f10"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f11"
                     },
-                    "to": {
-                        "key_code": "f11"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f11"
+                        }
+                    ]
                 },
                 {
                     "from": {
                         "key_code": "f12"
                     },
-                    "to": {
-                        "key_code": "f12"
-                    }
+                    "to": [
+                        {
+                            "key_code": "f12"
+                        }
+                    ]
                 }
             ],
             "name": "Default profile",
@@ -763,6 +797,7 @@
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "country_code": 0,
+                "indicate_sticky_modifier_keys_state": true,
                 "keyboard_type": "ansi",
                 "mouse_key_xy_scale": 100
             }
