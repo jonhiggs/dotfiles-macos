@@ -3,6 +3,7 @@ hs.window.animationDuration = 0
 local application = require "hs.application"
 require "hs.screen"
 require "window_management"
+require "window_selector"
 require "desktop_mode"
 
 -- cmus

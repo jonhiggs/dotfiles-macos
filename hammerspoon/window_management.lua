@@ -134,3 +134,12 @@ hs.hotkey.bind({"cmd", "shift"}, "right", function()
 	local window = hs.window.focusedWindow()
 	window:setFrame(relative_resize_window(window,20,0))
 end)
+
+-- make it smaller
+hs.hotkey.bind({"cmd"}, "f10", function()
+	local w = hs.window.focusedWindow()
+	local f = w:frame()
+	f.w = 1280
+	f.h = 1024
+	w:setFrame(f)
+end)
