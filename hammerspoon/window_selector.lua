@@ -30,3 +30,8 @@ end)
 hs.hotkey.bind({"cmd"}, "3", function()
 	focus_window("slack")
 end)
+
+-- switch to scapple
+hs.hotkey.bind({"cmd"}, "4", function()
+	focus_window("scapple")
+end)
