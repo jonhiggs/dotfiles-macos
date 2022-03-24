@@ -6,11 +6,14 @@ require "window_management"
 require "window_selector"
 require "desktop_mode"
 
+appWatcher = require('app_watcher')
+appWatcher:start()
+
 -- cmus
 hs.task = require("hs.task")
 hs.hotkey.bind({}, "F13", function()
-  hs.task.new("/Users/jonhiggs/.local/src/dotfiles-macos/bash/bin/cmus-remote-remote", nil, {"--pause"}):start()
-end)
+hs.task.new("/Users/jonhiggs/.local/src/dotfiles-macos/bash/bin/cmus-remote-remote", nil, {"--pause"}):start()
+wf:getWindows(hs.window.filter.sortByCreatedLast)end)
 
 hs.hotkey.bind({}, "F14", function()
   hs.task.new("/Users/jonhiggs/.local/src/dotfiles-macos/bash/bin/cmus-remote-remote", nil, {"--prev"}):start()

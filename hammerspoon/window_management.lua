@@ -67,32 +67,13 @@ function is_oversize(win,w,h)
 	return false
 end
 
--- fullscreen
-hs.hotkey.bind({"cmd", "shift"}, "F", function()
-  local window = hs.window.focusedWindow()
-	window:setFrame(position_window(window,0,0))
-	window:setFrame(resize_window(window,1,1))
-end)
-
--- narrow
-hs.hotkey.bind({"cmd", "shift"}, "D", function()
-	local window = hs.window.focusedWindow()
-	window:setFrame(position_window(window,0,0))
-	window:setFrame(resize_window(window,0.70,1))
-	local x,y = coord_for(window,"center")
-	window:setFrame(position_window(window,x,y))
-end)
-
--- slim
-hs.hotkey.bind({"cmd", "shift"}, "S", function()
-	local window = hs.window.focusedWindow()
-	window:setFrame(resize_window(window,0.3,1))
-	local x,y = coord_for(window,"center")
-	window:setFrame(position_window(window,x,y))
+-- maximise
+hs.hotkey.bind({"cmd", "shift"}, "M", function()
+  hs.window.focusedWindow():maximize(0)
 end)
 
 -- center
-hs.hotkey.bind({"cmd", "shift"}, "M", function()
+hs.hotkey.bind({"cmd", "shift"}, "C", function()
   local window = hs.window.focusedWindow()
 	local x,y = coord_for(window,"center")
 	window:setFrame(position_window(window,x,y))
@@ -135,11 +116,12 @@ hs.hotkey.bind({"cmd", "shift"}, "right", function()
 	window:setFrame(relative_resize_window(window,20,0))
 end)
 
--- make it smaller
-hs.hotkey.bind({"cmd"}, "f10", function()
-	local w = hs.window.focusedWindow()
-	local f = w:frame()
-	f.w = 1280
-	f.h = 1024
-	w:setFrame(f)
-end)
+
+--hs.hotkey.bind({"cmd", "shift"}, "X", function()
+--	local window = hs.window.focusedWindow()
+--	local screen = hs.screen.mainScreen()
+--	local mode = screen:currentMode()
+--	local geo = hs.geometry(-1,10,mode["w"]+2,mode["h"])
+--	window:move(geo, screen, false, 0)
+--	--window:centerOnScreen(screen, false, 0)
+--end)
