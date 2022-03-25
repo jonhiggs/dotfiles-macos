@@ -67,8 +67,8 @@ function is_oversize(win,w,h)
 	return false
 end
 
--- maximise
-hs.hotkey.bind({"cmd", "shift"}, "M", function()
+-- fullscreen
+hs.hotkey.bind({"cmd", "shift"}, "F", function()
   hs.window.focusedWindow():maximize(0)
 end)
 
@@ -117,11 +117,10 @@ hs.hotkey.bind({"cmd", "shift"}, "right", function()
 end)
 
 
---hs.hotkey.bind({"cmd", "shift"}, "X", function()
---	local window = hs.window.focusedWindow()
---	local screen = hs.screen.mainScreen()
---	local mode = screen:currentMode()
---	local geo = hs.geometry(-1,10,mode["w"]+2,mode["h"])
---	window:move(geo, screen, false, 0)
---	--window:centerOnScreen(screen, false, 0)
---end)
+hs.hotkey.bind({"cmd", "shift"}, "X", function()
+	local window = hs.window.focusedWindow()
+	local screen = hs.screen:mainScreen()
+	logger.i(hs.screen:currentMode()[1])
+	local geo = hs.geometry(-5,100,3000,3000)
+	window:move(geo, screen, false, 0)
+end)

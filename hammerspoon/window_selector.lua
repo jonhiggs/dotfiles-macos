@@ -3,37 +3,24 @@ logger.i("window selector is loaded")
 hs.application.enableSpotlightForNameSearches(true)
 
 function focus_window(name)
-	-- focus a window by name
 	logger.i("focusing on: " .. name)
-	local application = hs.application.find(name)
-	application:activate()
-	application:mainWindow():focus()
+	local filter = hs.window.filter.new()
+	filter:setDefaultFilter(false)
+	filter:setAppFilter(name,{currentSpace=true, focused=false})
+	local windows = filter:getWindows()
+	logger.i("found this many windows: " .. #windows)
 
-	--hs.timer.usleep(1000000)
+	for i=1, #(windows), 1 do 
+		print(i .. " is " .. windows[i]:title()) 
+	end
 
-	--local filter = hs.window.filter.default
-	--filter:setDefaultFilter(false)
-	--filter:setAppFilter(name,true)
-	--local windows = filter:getWindows(hs.window.filter.sortByFocusedLast)
-	--logger.i("found this many windows: " .. #windows)
-
-	--for i=1, #(windows), 1 do 
-	--	print(i .. " is " .. windows[i]:title()) 
-	--end
-
-	--if windows then
-	--	--return windows[#windows]:focus()
-	--else
-	--	logger.i("cannot find any iterm windows")
-	--	return nil
-	--end
+	if windows then
+		return windows[1]:focus()
+	else
+		logger.i("cannot find any iterm windows")
+		return nil
+	end
 end
-
--- fullscreen the focused app
-hs.hotkey.bind({"cmd", "shift"}, "F", function()
-	local window = hs.window.focusedWindow()
-	window:setFullScreen(not window:isFullScreen())
-end)
 
 -- switch to iterm
 hs.hotkey.bind({"cmd"}, "1", function()
@@ -64,3 +51,29 @@ hs.hotkey.bind({"cmd"}, "H", function()
 	window = hs.window.focusedWindow()
 	window:focusWindowWest()
 end)
+
+-- overscan
+hs.hotkey.bind({"cmd", "shift"}, "X", function()
+     local window = hs.window.focusedWindow()
+     local screen = hs.screen.mainScreen()
+     local mode = screen:currentMode()
+     local geo = hs.geometry(-3,0,mode["w"]+6,mode["h"])
+     window:move(geo, screen, false, 0)
+     window:centerOnScreen(screen, false, 0)
+end)
+
+-- underscan
+hs.hotkey.bind({"cmd", "shift"}, "Z", function()
+     local window = hs.window.focusedWindow()
+     local screen = hs.screen.mainScreen()
+     local mode = screen:currentMode()
+     local geo = hs.geometry(-3,3,mode["w"]-6,mode["h"]-6)
+     window:move(geo, screen, false, 0)
+     window:centerOnScreen(screen, false, 0)
+end)
+
+
+
+
+
+
