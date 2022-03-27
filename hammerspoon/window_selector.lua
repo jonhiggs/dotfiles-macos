@@ -42,15 +42,15 @@ hs.hotkey.bind({"cmd"}, "4", function()
 	focus_window("Scapple")
 end)
 
-hs.hotkey.bind({"cmd"}, "L", function()
-	window = hs.window.focusedWindow()
-	window:focusWindowEast()
-end)
-
-hs.hotkey.bind({"cmd"}, "H", function()
-	window = hs.window.focusedWindow()
-	window:focusWindowWest()
-end)
+--hs.hotkey.bind({"cmd"}, "L", function()
+--	window = hs.window.focusedWindow()
+--	window:focusWindowEast()
+--end)
+--
+--hs.hotkey.bind({"cmd"}, "H", function()
+--	window = hs.window.focusedWindow()
+--	window:focusWindowWest()
+--end)
 
 -- overscan
 hs.hotkey.bind({"cmd", "shift"}, "X", function()
@@ -71,9 +71,3 @@ hs.hotkey.bind({"cmd", "shift"}, "Z", function()
      window:move(geo, screen, false, 0)
      window:centerOnScreen(screen, false, 0)
 end)
-
-
-
-
-
-
