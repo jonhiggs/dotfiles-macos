@@ -9,7 +9,10 @@ function hide_focused()
 end
 
 function focus_window(name)
-	hide_focused()
+	if not (hs.window.focusedWindow():application():title() == name) then
+		hide_focused()
+	end
+
 	logger.i("focusing on: " .. name)
 	local filter = hs.window.filter.new()
 	filter:setDefaultFilter(false)
@@ -29,11 +32,6 @@ function focus_window(name)
 	end
 end
 
-
--- switch to iterm
-hs.hotkey.bind({"cmd"}, "5", function()
-	hide_others()
-end)
 
 -- switch to iterm
 hs.hotkey.bind({"cmd"}, "1", function()
