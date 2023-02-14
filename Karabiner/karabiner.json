@@ -631,16 +631,6 @@
                         },
                         {
                             "from": {
-                                "key_code": "fn"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "f4"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
                                 "key_code": "grave_accent_and_tilde"
                             },
                             "to": [
@@ -666,6 +656,16 @@
                             "to": [
                                 {
                                     "key_code": "fn"
+                                }
+                            ]
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_control"
+                            },
+                            "to": [
+                                {
+                                    "key_code": "f4"
                                 }
                             ]
                         }
