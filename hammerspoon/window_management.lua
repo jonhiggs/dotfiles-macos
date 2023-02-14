@@ -90,6 +90,16 @@ hs.hotkey.bind({"cmd", "shift"}, "H", function()
 	window:setFrame(position_window(window,x,y))
 end)
 
+-- slim
+hs.hotkey.bind({"cmd", "shift"}, "S", function()
+  local window = hs.window.focusedWindow()
+	window:setFrame(resize_window(window,0.65,1))
+	local x,y = coord_for(window,"center")
+	logger.i("left x:", x)
+	logger.i("left y:", y)
+	window:setFrame(position_window(window,x,y))
+end)
+
 -- right
 hs.hotkey.bind({"cmd", "shift"}, "L", function()
   local window = hs.window.focusedWindow()

@@ -2,7 +2,14 @@ local logger = hs.logger.new("init", "info")
 logger.i("window selector is loaded")
 hs.application.enableSpotlightForNameSearches(true)
 
+function hide_focused()
+	local app = hs.window.focusedWindow():application()
+	logger.i("hiding: " .. app:title())
+	app:hide()
+end
+
 function focus_window(name)
+	hide_focused()
 	logger.i("focusing on: " .. name)
 	local filter = hs.window.filter.new()
 	filter:setDefaultFilter(false)
@@ -21,6 +28,12 @@ function focus_window(name)
 		return nil
 	end
 end
+
+
+-- switch to iterm
+hs.hotkey.bind({"cmd"}, "5", function()
+	hide_others()
+end)
 
 -- switch to iterm
 hs.hotkey.bind({"cmd"}, "1", function()
