@@ -9,8 +9,13 @@ function hide_focused()
 end
 
 function focus_window(name)
-	if not (hs.window.focusedWindow():application():title() == name) then
-		hide_focused()
+	local focusedWindow = hs.window.focusedWindow()
+	if (focusedWindow == nil) then
+		logger.i("no window is currently focused")
+	else
+		if not (focusedWindow:application():title() == name) then
+			hide_focused()
+		end
 	end
 
 	logger.i("focusing on: " .. name)
