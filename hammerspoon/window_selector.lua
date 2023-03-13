@@ -20,10 +20,16 @@ function focus_window(name)
 
 	logger.i("focusing on: " .. name)
 	local filter = hs.window.filter.new()
+	hs.timer.usleep(500) -- using filter too fast was preventing window from always being found.
 	filter:setDefaultFilter(false)
 	filter:setAppFilter(name,{currentSpace=true, focused=false})
 	local windows = filter:getWindows()
+
 	logger.i("found this many windows: " .. #windows)
+
+	if (#(windows) == 0) then
+		return nil
+	end
 
 	for i=1, #(windows), 1 do 
 		print(i .. " is " .. windows[i]:title()) 
