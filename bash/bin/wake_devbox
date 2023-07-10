@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+wakeonlan 20:cf:30:e1:3c:dd
